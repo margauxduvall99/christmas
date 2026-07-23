@@ -223,12 +223,12 @@ img { max-width: 100%; display: block; }
 }
 
 .photo-wall {
-  max-width: 1100px;
+  max-width: 1400px;
   margin: 0 auto 6vh;
   padding: 0 6vw;
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-  gap: 32px;
+  grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
+  gap: 40px;
 }
 
 .photo-card {
@@ -253,6 +253,8 @@ img { max-width: 100%; display: block; }
 
 .photo-card img {
   border-radius: 1px;
+  width: 100%;
+  height: auto;
 }
 
 .empty-state {

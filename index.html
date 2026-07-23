@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Duvall Family Christmas Archive</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&family=Caveat:wght@600&family=Work+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="garland" aria-hidden="true"></div>
+
+<header class="site-header">
+  <a class="brand" href="index.html">
+    <span class="brand-mark">✳</span>
+    <span class="brand-name">Duvall Christmas</span>
+  </a>
+  <nav class="main-nav">
+    <a href="index.html">Home</a>
+    <a href="archive.html">Archive</a>
+  </nav>
+</header>
+
+<main>
+  <section class="hero">
+    <p class="hero-eyebrow">est. 2005</p>
+    <h1>Merry Christmas!</h1>
+    <p class="hero-copy">
+      Welcome to our Christmas card archive — twenty years of family photos,
+      questionable sweaters, and holiday chaos, all in one place. Pull up a
+      chair by the fire and relive the laughs of Christmas cards past.
+    </p>
+    <a class="cta" href="archive.html">Browse the archive</a>
+  </section>
+
+  <section class="featured">
+    <h2>Recent years</h2>
+    <p class="section-sub">Jump straight into the newest cards on the string.</p>
+    <div class="card-row" id="recent-years">
+      <!-- populated by script.js -->
+    </div>
+  </section>
+
+  <section class="signoff">
+    <p class="signoff-script">Wishing you happy holidays,</p>
+    <p class="signoff-name">The Duvall Family</p>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <p>© <span id="year"></span> Duvall Family Christmas Archive</p>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>

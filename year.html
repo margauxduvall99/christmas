@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title id="page-title">Year | Duvall Christmas</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&family=Caveat:wght@600&family=Work+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="garland" aria-hidden="true"></div>
+
+<header class="site-header">
+  <a class="brand" href="index.html">
+    <span class="brand-mark">✳</span>
+    <span class="brand-name">Duvall Christmas</span>
+  </a>
+  <nav class="main-nav">
+    <a href="index.html">Home</a>
+    <a href="archive.html">Archive</a>
+  </nav>
+</header>
+
+<main>
+  <section class="page-intro year-intro">
+    <p class="hero-eyebrow">card from</p>
+    <h1 id="year-heading">20––</h1>
+  </section>
+
+  <section class="photo-wall" id="photo-wall">
+    <!-- populated by script.js -->
+  </section>
+
+  <p class="empty-state" id="empty-state" hidden>
+    No photos found for this year yet. Add images to
+    <code id="empty-path"></code> named <code>1.png</code>, <code>2.png</code>, etc.
+  </p>
+
+  <nav class="year-pager">
+    <a id="prev-year" class="pager-link" href="#">&larr; Previous year</a>
+    <a href="archive.html" class="pager-link pager-all">All years</a>
+    <a id="next-year" class="pager-link" href="#">Next year &rarr;</a>
+  </nav>
+</main>
+
+<footer class="site-footer">
+  <p>© <span id="year"></span> Duvall Family Christmas Archive</p>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>

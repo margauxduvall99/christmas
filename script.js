@@ -14,6 +14,7 @@ const YEARS = [
 ];
 
 const MAX_PHOTOS_PER_YEAR = 12; // stops trying past this even if all load fine
+const PHOTO_EXTENSIONS = ["png", "jpg", "jpeg"]; // tried in this order for each photo number
 
 // ---------- Footer year (every page) ----------
 const footerYearEl = document.getElementById("year");
@@ -83,10 +84,8 @@ function loadPhotosForYear(slug, wall, emptyState) {
   let checked = 0;
 
   for (let i = 1; i <= MAX_PHOTOS_PER_YEAR; i++) {
-    const img = new Image();
-    const src = `images/${slug}/${i}.png`;
-
-    img.onload = () => {
+    tryExtensions(slug, i, 0, (src) => {
+      // A working src was found for this photo number
       found++;
       checked++;
       const card = document.createElement("div");
@@ -98,14 +97,11 @@ function loadPhotosForYear(slug, wall, emptyState) {
       card.appendChild(shown);
       wall.appendChild(card);
       maybeShowEmpty();
-    };
-
-    img.onerror = () => {
+    }, () => {
+      // No extension worked for this photo number
       checked++;
       maybeShowEmpty();
-    };
-
-    img.src = src;
+    });
   }
 
   function maybeShowEmpty() {
@@ -113,4 +109,21 @@ function loadPhotosForYear(slug, wall, emptyState) {
       emptyState.hidden = false;
     }
   }
+}
+
+// Tries each extension in PHOTO_EXTENSIONS in order for a given photo number,
+// calling onSuccess(src) on the first one that loads, or onFail() if none do.
+function tryExtensions(slug, photoNumber, extIndex, onSuccess, onFail) {
+  if (extIndex >= PHOTO_EXTENSIONS.length) {
+    onFail();
+    return;
+  }
+
+  const src = `images/${slug}/${photoNumber}.${PHOTO_EXTENSIONS[extIndex]}`;
+  const img = new Image();
+
+  img.onload = () => onSuccess(src);
+  img.onerror = () => tryExtensions(slug, photoNumber, extIndex + 1, onSuccess, onFail);
+
+  img.src = src;
 }

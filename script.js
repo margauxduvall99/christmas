@@ -16,6 +16,12 @@ const YEARS = [
 const MAX_PHOTOS_PER_YEAR = 12; // stops trying past this even if all load fine
 const PHOTO_EXTENSIONS = ["png", "jpg", "jpeg"]; // tried in this order for each photo number
 
+// Map a year's two-digit slug to a YouTube video ID to embed a video on that
+// year's page. Add more entries here as needed, e.g. "05": "dQw4w9WgXcQ".
+const VIDEOS = {
+  "22": "nhRNWk2Yh4A",
+};
+
 // ---------- Footer year (every page) ----------
 const footerYearEl = document.getElementById("year");
 if (footerYearEl) footerYearEl.textContent = new Date().getFullYear();
@@ -54,6 +60,17 @@ if (photoWall) {
 
   document.getElementById("year-heading").textContent = `20${year.slug}`;
   document.getElementById("page-title").textContent = `20${year.slug} | Duvall Christmas`;
+  photoWall.classList.add(`year-${year.slug}`);
+
+  const videoId = VIDEOS[year.slug];
+  if (videoId) {
+    const videoWrap = document.getElementById("year-video-wrap");
+    const videoFrame = document.getElementById("year-video-frame");
+    if (videoWrap && videoFrame) {
+      videoFrame.src = `https://www.youtube.com/embed/${videoId}`;
+      videoWrap.hidden = false;
+    }
+  }
 
   const emptyState = document.getElementById("empty-state");
   const emptyPath = document.getElementById("empty-path");
@@ -113,6 +130,7 @@ function loadPhotosForYear(slug, wall, emptyState) {
       const shown = new Image();
       shown.src = src;
       shown.alt = `Duvall family Christmas card, 20${slug}, photo ${i}`;
+      shown.addEventListener("click", () => openLightbox(src, shown.alt));
       card.appendChild(shown);
       wall.appendChild(card);
     }
@@ -138,4 +156,33 @@ function tryExtensions(slug, photoNumber, extIndex, onSuccess, onFail) {
   img.onerror = () => tryExtensions(slug, photoNumber, extIndex + 1, onSuccess, onFail);
 
   img.src = src;
+}
+
+// ---------- Lightbox (click any photo to zoom) ----------
+const lightbox = document.getElementById("lightbox");
+const lightboxImg = document.getElementById("lightbox-img");
+const lightboxClose = document.getElementById("lightbox-close");
+
+function openLightbox(src, alt) {
+  if (!lightbox || !lightboxImg) return;
+  lightboxImg.src = src;
+  lightboxImg.alt = alt || "";
+  lightbox.hidden = false;
+}
+
+function closeLightbox() {
+  if (!lightbox) return;
+  lightbox.hidden = true;
+  lightboxImg.src = "";
+}
+
+if (lightbox) {
+  lightboxClose.addEventListener("click", closeLightbox);
+  // Click the dark backdrop (not the image itself) to close
+  lightbox.addEventListener("click", (e) => {
+    if (e.target === lightbox) closeLightbox();
+  });
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape") closeLightbox();
+  });
 }

@@ -153,6 +153,36 @@ img { max-width: 100%; display: block; }
   box-shadow: 0 10px 20px rgba(163, 38, 56, 0.3);
 }
 
+.cta-row {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 14px;
+}
+.cta-soon {
+  background: transparent;
+  color: var(--pine-deep);
+  border: 2px dashed var(--pine);
+  box-shadow: none;
+  padding: 11px 24px;
+}
+.cta-soon:hover {
+  box-shadow: 0 6px 14px var(--paper-shadow);
+}
+.cta-soon-tag {
+  display: inline-block;
+  margin-left: 6px;
+  padding: 2px 8px;
+  border-radius: 999px;
+  background: var(--gold);
+  color: var(--pine-deep);
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  vertical-align: 2px;
+}
+
 /* ---------- Featured / cards ---------- */
 .featured {
   max-width: 1040px;
@@ -181,6 +211,22 @@ img { max-width: 100%; display: block; }
   position: relative;
   transition: transform 0.15s ease, box-shadow 0.15s ease, background 0.15s ease;
   box-shadow: 0 3px 0 var(--paper-shadow);
+}
+
+.year-card.is-coming-soon {
+  background: transparent;
+  border: 2px dashed rgba(31,59,44,0.35);
+  box-shadow: none;
+}
+.year-card-tag {
+  display: block;
+  margin-top: 4px;
+  font-family: "Work Sans", sans-serif;
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--cranberry);
 }
 
 .year-card::before {
@@ -354,6 +400,33 @@ img { max-width: 100%; display: block; }
 }
 .lightbox-close:hover {
   color: var(--gold);
+}
+
+.coming-soon {
+  box-sizing: border-box;
+  width: min(560px, calc(100% - 32px));
+  margin: 0 auto 6vh;
+  padding: 36px 24px;
+  text-align: center;
+  border: 2px dashed rgba(31,59,44,0.35);
+  border-radius: var(--radius);
+}
+.coming-soon-badge {
+  display: inline-block;
+  margin: 0 0 14px;
+  padding: 6px 16px;
+  border-radius: 999px;
+  background: var(--cranberry);
+  color: var(--cream);
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  font-size: 0.85rem;
+}
+.coming-soon-copy {
+  margin: 0;
+  color: var(--ink);
+  font-size: 1.05rem;
 }
 
 .empty-state {

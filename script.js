@@ -12,6 +12,9 @@ const YEARS = [
   { slug: "21", label: "'21" }, { slug: "22", label: "'22" },
   { slug: "23", label: "'23" }, { slug: "24", label: "'24" },
   { slug: "25", label: "'25" },
+  // A year whose card isn't ready yet: its page shows a "coming soon" note.
+  // Delete `comingSoon: true` once the card or photos are added.
+  { slug: "26", label: "'26", comingSoon: true },
 ];
 
 const MAX_PHOTOS_PER_YEAR = 12; // stops trying past this even if all load fine
@@ -57,6 +60,13 @@ function makeYearCard(slug, label) {
   a.className = "year-card";
   a.href = `year.html?y=${slug}`;
   a.textContent = label;
+  if (YEARS.find((y) => y.slug === slug)?.comingSoon) {
+    a.classList.add("is-coming-soon");
+    const tag = document.createElement("span");
+    tag.className = "year-card-tag";
+    tag.textContent = "Coming soon";
+    a.appendChild(tag);
+  }
   return a;
 }
 
@@ -97,8 +107,16 @@ if (photoWall) {
   const emptyPath = document.getElementById("empty-path");
   if (emptyPath) emptyPath.textContent = `images/${year.slug}/`;
 
-  // Years with an interactive card don't need photos, so skip the "no photos" note.
-  loadPhotosForYear(year.slug, photoWall, cardSrc ? null : emptyState);
+  if (year.comingSoon) {
+    const comingSoon = document.getElementById("coming-soon");
+    if (comingSoon) {
+      document.getElementById("coming-soon-year").textContent = `20${year.slug}`;
+      comingSoon.hidden = false;
+    }
+  } else {
+    // Years with an interactive card don't need photos, so skip the "no photos" note.
+    loadPhotosForYear(year.slug, photoWall, cardSrc ? null : emptyState);
+  }
 
   // Prev / next navigation
   const prevLink = document.getElementById("prev-year");

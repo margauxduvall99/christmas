@@ -27,6 +27,7 @@ const VIDEOS = {
 // show on that year's page, e.g. a card you can open and flip over.
 const CARDS = {
   "18": "images/18/card.html",
+  "21": "images/21/card.html",
   "25": "images/25/card.html",
 };
 

@@ -265,6 +265,14 @@ img { max-width: 100%; display: block; }
   aspect-ratio: 560 / 1010;
 }
 
+/* 2021: opens top-to-bottom (two panels stacked when open) */
+.year-card-wrap.year-21 {
+  max-width: 720px;
+}
+.year-card-wrap.year-21 .year-card-frame {
+  aspect-ratio: 640 / 880;
+}
+
 /* ---------- Photo wall (year page) ---------- */
 .year-intro h1 {
   font-size: clamp(2.2rem, 8vw, 3.2rem);

@@ -11,6 +11,7 @@ const YEARS = [
   { slug: "19", label: "'19" }, { slug: "20", label: "'20" },
   { slug: "21", label: "'21" }, { slug: "22", label: "'22" },
   { slug: "23", label: "'23" }, { slug: "24", label: "'24" },
+  { slug: "25", label: "'25" },
 ];
 
 const MAX_PHOTOS_PER_YEAR = 12; // stops trying past this even if all load fine

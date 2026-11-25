@@ -26,6 +26,7 @@ const VIDEOS = {
 // Map a year's slug to an interactive card (a self-contained HTML file) to
 // show on that year's page, e.g. a card you can open and flip over.
 const CARDS = {
+  "18": "images/18/card.html",
   "25": "images/25/card.html",
 };
 
@@ -84,6 +85,7 @@ if (photoWall) {
     const cardWrap = document.getElementById("year-card-wrap");
     const cardFrame = document.getElementById("year-card-frame");
     if (cardWrap && cardFrame) {
+      cardWrap.classList.add(`year-${year.slug}`);
       cardFrame.src = cardSrc;
       cardWrap.hidden = false;
     }

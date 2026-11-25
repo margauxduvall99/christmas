@@ -23,6 +23,12 @@ const VIDEOS = {
   "22": "nhRNWk2Yh4A",
 };
 
+// Map a year's slug to an interactive card (a self-contained HTML file) to
+// show on that year's page, e.g. a card you can open and flip over.
+const CARDS = {
+  "25": "images/25/card.html",
+};
+
 // ---------- Footer year (every page) ----------
 const footerYearEl = document.getElementById("year");
 if (footerYearEl) footerYearEl.textContent = new Date().getFullYear();
@@ -73,11 +79,22 @@ if (photoWall) {
     }
   }
 
+  const cardSrc = CARDS[year.slug];
+  if (cardSrc) {
+    const cardWrap = document.getElementById("year-card-wrap");
+    const cardFrame = document.getElementById("year-card-frame");
+    if (cardWrap && cardFrame) {
+      cardFrame.src = cardSrc;
+      cardWrap.hidden = false;
+    }
+  }
+
   const emptyState = document.getElementById("empty-state");
   const emptyPath = document.getElementById("empty-path");
   if (emptyPath) emptyPath.textContent = `images/${year.slug}/`;
 
-  loadPhotosForYear(year.slug, photoWall, emptyState);
+  // Years with an interactive card don't need photos, so skip the "no photos" note.
+  loadPhotosForYear(year.slug, photoWall, cardSrc ? null : emptyState);
 
   // Prev / next navigation
   const prevLink = document.getElementById("prev-year");

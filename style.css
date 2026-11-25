@@ -242,6 +242,21 @@ img { max-width: 100%; display: block; }
   border: 0;
 }
 
+/* ---------- Interactive card embed ---------- */
+.year-card-wrap {
+  max-width: 980px;
+  margin: 0 auto 6vh;
+  padding: 0 4vw;
+}
+
+.year-card-frame {
+  display: block;
+  width: 100%;
+  aspect-ratio: 1440 / 1240; /* open card spread plus its buttons */
+  border: 0;
+  background: transparent;
+}
+
 /* ---------- Photo wall (year page) ---------- */
 .year-intro h1 {
   font-size: clamp(2.2rem, 8vw, 3.2rem);

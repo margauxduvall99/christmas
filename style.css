@@ -382,11 +382,6 @@ img { max-width: 100%; display: block; }
   width: 100%;
 }
 
-/* 2024: bump every photo up a bit */
-.photo-wall.year-24 {
-  grid-template-columns: repeat(auto-fit, minmax(460px, 1fr));
-}
-
 /* ---------- Year pager ---------- */
 .year-pager {
   display: flex;

@@ -28,6 +28,7 @@ const VIDEOS = {
 const CARDS = {
   "18": "images/18/card.html",
   "21": "images/21/card.html",
+  "24": "images/24/card.html",
   "25": "images/25/card.html",
 };
 
